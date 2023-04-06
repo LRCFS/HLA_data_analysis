@@ -1,5 +1,22 @@
 # HLA_data_analysis
 
+## Quickstart
+
+
+
+## Prerequisites
+
+The following tools are required.
+
+    BBMap from [BBTools](https://jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/)
+    Samtools
+    Picard
+    BWA
+    [Jvarkit](https://jvarkit.readthedocs.io/en/latest/)
+    Snakemake 
+
+## Details
+
 
 
 
