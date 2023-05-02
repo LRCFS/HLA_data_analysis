@@ -1,7 +1,6 @@
 
 Samples = [
-'Sample_L1',
-'Sample_L2']
+'HLA']
 
 rule target:
 	input: expand("{sample}.summary.fasta", sample=Samples)
@@ -21,8 +20,8 @@ rule merge:
 	Take paired-end reads and merge overlaps into single reads
 	"""
 	input:
-		in1 = "{sample}_1.fq.gz",
-		in2 = "{sample}_2.fq.gz"
+		in1 = "dat/{sample}.1.fastq.gz",
+		in2 = "dat/{sample}.2.fastq.gz"
 	output:
 		out = "{sample}_merge.fq.gz",
 		outu = "{sample}_unmerge.fq.gz"
@@ -35,7 +34,7 @@ rule bwa:
 	"""
 	input:
 		fq="{sample}_merge.fq.gz",
-		ref="Hsapiens_chr6_alt_ens98.fa"
+		ref="dat/reference.fa"
 	output:
 		temp("{sample}.sam")
 	threads: 8
@@ -59,7 +58,7 @@ rule pcrclip:
 	"""
 	input:
 		bam="{sample}_sort.bam",
-		bed="HLA-DRB3.bed"
+		bed="dat/HLA-A.bed"
 	output:
 		temp("{sample}_tmp.bam")
 	shell:
